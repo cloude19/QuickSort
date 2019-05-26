@@ -21,7 +21,7 @@ namespace Quick_Sort
 
         static int[] CPosition(int[] Values)
         {
-            int currentSmallest = -1;
+           // int currentSmallest = -1;
 
             for (int x = 0; x < Values.Length; x++)
             {
