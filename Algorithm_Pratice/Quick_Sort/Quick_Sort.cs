@@ -19,10 +19,16 @@ namespace Quick_Sort
 
         }
 
-        static int CPosition(int[] Values)
+        static int[] CPosition(int[] Values)
         {
+            int currentSmallest = -1;
 
-            return 1;
+            for (int x = 0; x < Values.Length; x++)
+            {
+
+            }
+
+            return Values;
         }
     }
 }
