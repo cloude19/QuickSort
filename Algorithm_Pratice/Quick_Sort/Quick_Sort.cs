@@ -7,34 +7,53 @@ namespace Quick_Sort
     static class Quick_Sort
     {
         static private int pivot { get; set; } = 0;
+        static private int start { get; set; } = 0;
+        static private int end { get; set; } = 0;
 
-        static Quick_Sort()
+        //values are not currently retured
+        static public void QuickSort(params int[] Values)
         {
+            Sort(0, Values.Length - 1, Values);
         }
 
-        static void Sort(params int[] Values)
+        static private void Sort(int start, int end, int[] Values)
         {
-            if(pivot == 0)
+            if (start < end)
             {
-                pivot = Values.Length - 1;
+                //assign pivot
+                pivot = FindPivot(start, end, Values);
+
+                //check left and right of pivot recursivly
+                Sort(start, pivot - 1, Values);
+                Sort(pivot + 1, end, Values);
             }
-            //assign pivot
-             pivot = CPosition(Values, 0);
-
-            //check right and left of pivot recursivly
-
         }
 
-        static int CPosition(int[] Values, int pivot)
+        static private int FindPivot(int start, int end, int[] Values)
         {
-            int currentSmallest = -1;
+            int currentSmallest = start - 1;
 
-            for (int x = 0; x < Values.Length; x++)
+            for (int x = start; x < end; x++)
             {
-
+                if(Values[x] <= Values[end])
+                {
+                    currentSmallest++;
+                    Swap(currentSmallest, x, Values);
+                }
             }
+            currentSmallest++;
 
-            return Values;
+            Swap(currentSmallest, end, Values);
+
+            return currentSmallest;
+        }
+
+        //O(1)
+        static private void Swap(int index1, int index2, int[] values)
+        {
+            int temptValue = values[index1];
+            values[index1] = values[index2];
+            values[index2] = temptValue;
         }
     }
 }
