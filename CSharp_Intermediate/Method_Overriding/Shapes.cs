@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Method_Overriding
 {
-    public class Shapes
+    public class Shapes : Abstract_Shape
     {
        public Shapes()
         {
 
         }
 
-        virtual public int area()
+       override public int area()
         {
             return 63;
         }
